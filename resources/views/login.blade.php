@@ -11,18 +11,28 @@
 <body>
     <div class="container d-flex flex-column justify-content-center align-items-center min-vh-100">
         <h2>OOAD App</h2>
-        <div class="login">
-            <form action="/login" method="POST" class="d-flex flex-column" enctype="multipart/form-data">                
+        <div >
+            <form class="container d-flex flex-column justify-content-center align-items-center"
+             role="form" action="/login" method="POST" enctype="multipart/form-data">                
                 @csrf
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="Username">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Password">
-                <br>
-                <button class="btn btn-outline-primary" type="submit">LOGIN</button>
-                <br>
-                <p>Didn't have an account? Sign up now!</p>
-                <a href="/register" class="btn btn-outline-primary">SIGN UP</a>
+                
+                <div class="form-group p-2">
+                    <label for="username">
+                        Username
+                    </label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+                </div>
+                <div class="form-group p-2">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                </div>
+                <div class="p-2">
+                    <button class="btn btn-outline-primary mt-2" type="submit">LOGIN</button>
+                </div>
+
+                <a href="/register" class="p-2">
+                    Didn't have an account? 
+                </a>
             </form>
         </div>
     </div>
