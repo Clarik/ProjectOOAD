@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,13 +25,13 @@ class UserController extends Controller
             'password' => 'required|string',
         ]);
 
-        $credentials = $request->only('username', 'password');
+        $user = User::where('username', $request->username)
+                    ->where('password', $request->password)
+                    ->first();
 
-        if (Auth::attempt($credentials)) {
-            return redirect()->intended('home');
-        }
+        echo "$user->username $user->password";
 
-        return redirect('login')->with('error', 'Wrong username or password');
+        //return redirect('login')->with('error', 'Wrong username or password');
     }
 
     public function signUpUser(Request $request)
