@@ -17,6 +17,7 @@ class CreateMsmeTable extends Migration
             
             $table->bigIncrements('msmeID');
             $table->integer('userID');
+            $table->string('msmeName');
             $table->string('msmeAddress');
             $table->timestamps();
         });

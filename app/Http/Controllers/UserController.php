@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -29,14 +30,62 @@ class UserController extends Controller
                     ->where('password', $request->password)
                     ->first();
 
-        echo "$user->username $user->password";
+        $username = $user->username;
+
+        if(is_null($user)){
+            return view('home', compact("username"));
+        }
 
         //return redirect('login')->with('error', 'Wrong username or password');
     }
 
-    public function signUpUser(Request $request)
+    public function signUpMSME(Request $request)
     {
+        DB::table('user')->insert([
+            'username' => $request->username,
+            'password' => $request->pass,
+            'email' => $request->email,
+            'phone' => $request->phone
+        ]);
 
+        $username = $request->username;
+        $password = $request->pass;
+
+        $user = User::where('username', $username)->where('password', $password)->get();
+        $id = $user->id;
+        
+        DB::table('msme')->insert([
+            'userID' => $id,
+            'msmeName' => $request->name,
+            'msmeAddress' => $request->address
+        ]);
+
+        return view('home');
+    }
+
+    public function signUpApplicant(Request $request)
+    {
+        DB::table('user')->insert([
+            'username' => $request->username,
+            'password' => $request->pass,
+            'email' => $request->email,
+            'phone' => $request->phone
+        ]);
+
+        $username = $request->username;
+        $password = $request->pass;
+
+        $user = User::where('username', $username)->where('password', $password)->get();
+        $id = $user->id;
+        
+        DB::table('applicant')->insert([
+            'userID' => $id,
+            'applicantName' => $request->name,
+            'applicantAddress' => $request->address,
+            'applicantDOB' => $request->dob
+        ]);
+
+        return view('home');
     }
 
     /**
