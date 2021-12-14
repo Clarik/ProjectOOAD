@@ -27,12 +27,12 @@ class UserController extends Controller
         ]);
 
         $user = User::where('username', $request->username)
-                    ->where('password', $request->password)
-                    ->first();
+            ->where('password', $request->password)
+            ->first();
 
         $username = $user->username;
 
-        if(is_null($user)){
+        if (!empty($user)) {
             return view('home', compact("username"));
         }
 
@@ -41,19 +41,32 @@ class UserController extends Controller
 
     public function signUpMSME(Request $request)
     {
+        $username = $request->username;
+        $password = $request->pass;
+        $email = $request->email;
+
+        // Check username
+        $user = User::where('username', $username)->get();
+        if (empty($user)) {
+            return;
+        }
+
+        // Check email
+        $user = User::where('email', $email)->get();
+        if (empty($user)) {
+            return;
+        }
+
         DB::table('user')->insert([
-            'username' => $request->username,
-            'password' => $request->pass,
-            'email' => $request->email,
+            'username' => $username,
+            'password' => $password,
+            'email' => $email,
             'phone' => $request->phone
         ]);
 
-        $username = $request->username;
-        $password = $request->pass;
-
         $user = User::where('username', $username)->where('password', $password)->get();
-        $id = $user->id;
-        
+        $id = $user[0]->userID;
+
         DB::table('msme')->insert([
             'userID' => $id,
             'msmeName' => $request->name,
@@ -65,19 +78,32 @@ class UserController extends Controller
 
     public function signUpApplicant(Request $request)
     {
+        $username = $request->username;
+        $password = $request->pass;
+        $email = $request->email;
+
+        // Check username
+        $user = User::where('username', $username)->get();
+        if (empty($user)) {
+            return;
+        }
+
+        // Check email
+        $user = User::where('email', $email)->get();
+        if (empty($user)) {
+            return;
+        }
+
         DB::table('user')->insert([
             'username' => $request->username,
             'password' => $request->pass,
-            'email' => $request->email,
+            'email' => $email,
             'phone' => $request->phone
         ]);
 
-        $username = $request->username;
-        $password = $request->pass;
-
         $user = User::where('username', $username)->where('password', $password)->get();
-        $id = $user->id;
-        
+        $id = $user[0]->userID;
+
         DB::table('applicant')->insert([
             'userID' => $id,
             'applicantName' => $request->name,
