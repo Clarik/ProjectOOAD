@@ -12,11 +12,12 @@
     <div class="container d-flex flex-column justify-content-center align-items-center min-vh-100">
         <h2>OOAD App</h2>
         <div class="login">
-            <form action="" method="POST" class="d-flex flex-column">
+            <form action="/login" method="POST" class="d-flex flex-column" enctype="multipart/form-data">                
+                @csrf
                 <label for="username">Username</label>
-                <input type="text" id="username" name="username">
-                <label for="passowrd">Password</label>
-                <input type="password" id="password" name="passoword">
+                <input type="text" id="username" name="username" placeholder="Username">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" " placeholder="Password">
                 <br>
                 <button class="btn btn-outline-primary" type="submit">LOGIN</button>
                 <br>
