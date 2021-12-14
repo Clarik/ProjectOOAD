@@ -13,8 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function (){
+    return view('login');
+});
+
+Route::get('/register', function(){
+    return view('register');
+});
+
+Route::get('/register/MSME', function(){
+    return view('msmeregis');
+});
+
+Route::get('/register/Applicant', function(){
+    return view('applicantregis');
 });
 
 Route::get('/home', function(){
