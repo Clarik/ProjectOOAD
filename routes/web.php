@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/login', [UserController::class, 'index']);
-Route::post('/login', [UserController::class, 'login']);
-Route::post('/register/MSME', [UserController::class, 'signUpMSME']);
-Route::post('/register/Applicant', [UserController::class, 'signUpApplicant']);
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/register/MSME', [RegisterController::class, 'signUpMSME']);
+Route::post('/register/Applicant', [RegisterController::class, 'signUpApplicant']);
 
 Route::get('/register', function(){
     return view('register');
