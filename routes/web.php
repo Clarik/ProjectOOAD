@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
@@ -27,6 +28,5 @@ Route::get('/register', function(){
     return view('register');
 });
 
-Route::get('/home', function(){
-    return view('home');
-});
+Route::get('/logout', [LoginController::class, 'logout']);
+Route::get('/home', [HomeController::class, 'index']);

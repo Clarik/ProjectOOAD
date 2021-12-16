@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use League\CommonMark\Extension\SmartPunct\EllipsesParser;
+use Illuminate\Support\Facades\Session;
 
-use function Psy\debug;
+
 
 class LoginController extends Controller
 {
@@ -31,5 +31,8 @@ class LoginController extends Controller
         return back();
     }
 
-    
+    public function logout(){
+        session()->flush();
+        return redirect('login');
+    }
 }

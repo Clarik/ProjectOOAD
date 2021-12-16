@@ -15,7 +15,7 @@
       <div class="left w-50 d-flex justify-content-start">
         <div class="navbar-brand ms-2 p-2 fs-4">
           <a href="/home" class="nav-link active">
-            <h1>OOAD App</h1>
+            <h1>CareerAlley</h1>
           </a>
         </div>
         <form class="form-inline my-2 my-lg-0 d-flex align-items-center">
@@ -37,7 +37,7 @@
               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <a href="" class="dropdown-item">View Profile</a>
                 <div class="dropdown-divider"></div>
-                <a href="/login" class="dropdown-item">Logout</a>
+                <a href="/logout" class="dropdown-item">Logout</a>
               </div>
             </li>
           </ul>
