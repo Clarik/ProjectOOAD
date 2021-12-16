@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use League\CommonMark\Extension\SmartPunct\EllipsesParser;
 
+use function Psy\debug;
+
 class LoginController extends Controller
 {
     public function login(Request $request)
@@ -20,8 +22,11 @@ class LoginController extends Controller
             ->where('password', $request->password)
             ->first();
 
-        if (!empty($user))
+        if (!empty($user)){
+            session(['user' => $user]);
             return view('home');
+        }
+            
 
         return back();
     }
