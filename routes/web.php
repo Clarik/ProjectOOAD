@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,19 +18,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/login', [UserController::class, 'index']);
 Route::post('/login', [LoginController::class, 'login']);
+Route::get('/register/MSME', [RegisterController::class, 'indexMSME']);
+Route::get('/register/Applicant', [RegisterController::class, 'indexApplicant']);
 Route::post('/register/MSME', [RegisterController::class, 'signUpMSME']);
 Route::post('/register/Applicant', [RegisterController::class, 'signUpApplicant']);
 
 Route::get('/register', function(){
     return view('register');
-});
-
-Route::get('/register/MSME', function(){
-    return view('msmeregis');
-});
-
-Route::get('/register/Applicant', function(){
-    return view('applicantregis');
 });
 
 Route::get('/home', function(){

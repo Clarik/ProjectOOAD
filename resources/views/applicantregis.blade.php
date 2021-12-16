@@ -56,6 +56,12 @@
 
             <button type="submit" class="btn btn-success mt-2">Register</button>
 
+            @if (!is_null($error))
+            <div class="alert alert-danger">
+                {{ $error }}
+              </div>
+            @endif
+
     </form>
 </body>
 

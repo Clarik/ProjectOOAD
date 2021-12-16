@@ -51,6 +51,11 @@
             </div>
 
             <button type="submit" class="btn btn-success mt-2">Register</button>
+
+            <div class="alert alert-danger mt-3 <?php if ($error == "") {echo " invisible";} ?>">
+                {{ $error }}
+            </div>
+    </form>
 </body>
 
 </html>

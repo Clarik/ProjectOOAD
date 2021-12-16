@@ -8,6 +8,16 @@ use Illuminate\Support\Facades\DB;
 
 class RegisterController extends Controller
 {
+    public function indexMSME(){
+        $error = "";
+        return view('msmeregis', compact("error"));
+    }
+
+    public function indexApplicant(){
+        $error = "";
+        return view('applicantregis', compact("error"));
+    }
+
     public function signUpMSME(Request $request)
     {
         $username = $request->username;
@@ -19,14 +29,14 @@ class RegisterController extends Controller
         $user = User::where('username', $username)->first();
         if (!is_null($user)) {
             $error = "User already exists!";
-            return view('home')->with('error', $error);
+            return view('msmeregis')->with('error', $error);
         }
 
         // Check email
         $user = User::where('email', $email)->first();
         if (!is_null($user)) {
             $error = "Email already registered!";
-            return view('home')->with('error', $error);
+            return view('msmeregis')->with('error', $error);
         }
 
         DB::table('user')->insert([
@@ -58,14 +68,14 @@ class RegisterController extends Controller
         $user = User::where('username', $username)->get();
         if (!is_null($user)) {
             $error = "User already exists!";
-            return view('home')->with('error', $error);
+            return view('applicantregis')->with('error', $error);
         }
 
         // Check email
         $user = User::where('email', $email)->get();
         if (!is_null($user)) {
             $error = "Email already registered!";
-            return view('home')->with('error', $error);
+            return view('applicantregis')->with('error', $error);
         }
 
         DB::table('user')->insert([
@@ -75,8 +85,8 @@ class RegisterController extends Controller
             'phone' => $request->phone
         ]);
 
-        $user = User::where('username', $username)->where('password', $password)->get();
-        $id = $user[0]->userID;
+        $user = User::where('username', $username)->where('password', $password)->first();
+        $id = $user->userID;
 
         DB::table('applicant')->insert([
             'userID' => $id,
