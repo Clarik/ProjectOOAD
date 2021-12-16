@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use League\CommonMark\Extension\SmartPunct\EllipsesParser;
 
 class LoginController extends Controller
 {
     public function login(Request $request)
     {
+
         $request->validate([
             'username' => 'required|string',
             'password' => 'required|string',
@@ -18,12 +20,11 @@ class LoginController extends Controller
             ->where('password', $request->password)
             ->first();
 
-        $username = $user->username;
+        if (!empty($user))
+            return view('home');
 
-        if (!empty($user)) {
-            return view('home', compact("username"));
-        }
-
-        //return redirect('login')->with('error', 'Wrong username or password');
+        return back();
     }
+
+    
 }
