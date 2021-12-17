@@ -22,39 +22,67 @@
                 <div class="form-group p-2">
                     <label for="username">Username</label>
                     <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+                    @if($errors->has('username'))
+                        <div class="m-auto mt-1 alert alert-danger p-1">
+                            {{ $errors->first('username') }}
+                        </div>
+                    @endif
                 </div>
 
                 <div class="form-group p-2">
                     <label for="email">Email</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+
+                    @if($errors->has('email'))
+                        <div class="m-auto mt-1 alert alert-danger p-1">
+                            {{ $errors->first('email') }}
+                        </div>
+                    @endif
                 </div>
 
                 <div class="form-group p-2">
-                    <label for="pass">Password</label>
-                    <input type="password" class="form-control" id="pass" name="pass" placeholder="Password">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                    @if($errors->has('password'))
+                        <div class="m-auto mt-1 alert alert-danger p-1">
+                            {{ $errors->first('password') }}
+                        </div>
+                    @endif
                 </div>
 
 
                 <div class="form-group p-2">
                     <label for="name">Name</label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="MSME Name">
+                    @if($errors->has('name'))
+                        <div class="m-auto mt-1 alert alert-danger p-1">
+                            {{ $errors->first('name') }}
+                        </div>
+                    @endif
                 </div>
 
                 <div class="form-group p-2">
                     <label for="phone">Phone Number</label>
                     <input type="tel" class="form-control" id="phone" name="phone" placeholder="Phone Number">
+                    @if($errors->has('phone'))
+                        <div class="m-auto mt-1 alert alert-danger p-1">
+                            {{ $errors->first('phone') }}
+                        </div>
+                    @endif
                 </div>
 
                 <div class="form-group p-2">
                     <label for="address">Address</label>
                     <input type="text" class="form-control" id="address" name="address" placeholder="Address">
+                    @if($errors->has('address'))
+                        <div class="m-auto mt-1 alert alert-danger p-1">
+                            {{ $errors->first('address') }}
+                        </div>
+                    @endif
                 </div>
 
                 <button type="submit" class="btn btn-success mt-2">Register</button>
 
-                <div class="alert alert-danger mt-3 <?php if ($error == "") {echo " invisible";} ?>">
-                    {{ $error }}
-                </div>
         </form>
     </div>
 </body>
