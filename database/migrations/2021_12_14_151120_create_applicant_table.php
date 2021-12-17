@@ -19,8 +19,8 @@ class CreateApplicantTable extends Migration
             $table->string('applicantName');
             $table->string('applicantAddress');
             $table->string('applicantDOB');
-            $table->string('CV');
-            $table->string('portofolioLink');
+            $table->string('CV')->nullable();
+            $table->string('portofolioLink')->nullable();
             $table->timestamps();
         });
     }
