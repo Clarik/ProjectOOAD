@@ -18,8 +18,9 @@
             <h1>CareerAlley</h1>
           </a>
         </div>
-        <form class="form-inline my-2 my-lg-0 d-flex align-items-center">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <form class="form-inline my-2 my-lg-0 d-flex align-items-center" role="form" action="/search" method="POST" enctype="multipart/form-data">
+          @csrf
+          <input class="form-control mr-sm-2" type="text" name="search" id="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success my-2 my-sm-0 ms-2" type="submit">Search</button>
         </form>
       </div>

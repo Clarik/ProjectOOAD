@@ -24,7 +24,7 @@ class LoginController extends Controller
 
         if (!empty($user)){
             session(['user' => $user]);
-            return view('home');
+            return redirect('home');
         }
             
 

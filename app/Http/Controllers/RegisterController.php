@@ -77,7 +77,7 @@ class RegisterController extends Controller
 
         $new_msme->save();
 
-        return view('login');
+        return redirect('login')->with('alert', 'Your Enterprise account successfully created!');
     }
 
     public function signUpApplicant(Request $request)
@@ -138,6 +138,6 @@ class RegisterController extends Controller
         $new_applicant->save();
 
 
-        return view('login');
+        return redirect('login')->with('alert', 'Your Account successfully created!');
     }
 }
