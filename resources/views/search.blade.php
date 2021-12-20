@@ -19,6 +19,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{$msme->msmeName}}</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">{{$msme->msmeAddress}}</h6>
+                                <h6 class="card-subtitle mb-2 text-muted">{{$msme->user->phone}}</h6>
                             </div>
                         </div>
                     @endforeach
@@ -35,7 +36,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{$applicant->applicantName}}</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">{{$applicant->applicantAddress}}</h6>
-                                <h6 class="card-subtitle mb-2 text-muted">{{$applicant->applicantDOB}}</h6>
+                                <h6 class="card-subtitle mb-2 text-muted">{{$applicant->user->phone}}</h6>
                             </div>
                         </div>
                     @endforeach

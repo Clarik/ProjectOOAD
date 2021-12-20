@@ -10,18 +10,16 @@
                 <div class="display-3 me-2">
                     Welcome,
                     <strong class="text-secondary">{{$user->username}}</strong>
+                    !
                 </div>
                 
             </div>
             <div class="container mt-4">
-                <div class="h2">Forum</div>
-                <div class="dropdown-divider"></div>
-                @php
-                for($i=0;$i<2;$i++){
-                    echo "<div class='card-group'>";
-                    for($j=0;$j<5;$j++){
-                        echo '
-                        <div class="card m-3" style="width: 18rem;">
+                <div class="h2">Recent Forums</div>
+                <hr>
+                <div class="card-group">
+                    @for ($i = 0; $i < 5; $i++)
+                        <div class="card m-3" style="width: 18rem; border-radius:20px">
                             <div class="card-body">
                                 <h5 class="card-title">Forum Title</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">Author Name</h6>
@@ -29,11 +27,11 @@
                                 <a href="#" class="card-link">View more</a>
                             </div>
                         </div>
-                        ';
-                    }
-                    echo "</div>";
-                }
-                @endphp
+                    @endfor
+                </div>
+                <div class="d-flex justify-content-end">
+                    <a href="/forum" class="text-right">See all >></a>
+                </div>
             </div>
         </div>
     </div>

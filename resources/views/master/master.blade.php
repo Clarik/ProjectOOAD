@@ -18,9 +18,8 @@
             <h1>CareerAlley</h1>
           </a>
         </div>
-        <form class="form-inline my-2 my-lg-0 d-flex align-items-center" role="form" action="/search" method="POST" enctype="multipart/form-data">
-          @csrf
-          <input class="form-control mr-sm-2" type="text" name="search" id="search" placeholder="Search" aria-label="Search">
+        <form class="form-inline my-2 my-lg-0 d-flex align-items-center" role="form" action="/search" enctype="multipart/form-data">
+          <input class="form-control mr-sm-2" type="search" name="search" id="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success my-2 my-sm-0 ms-2" type="submit">Search</button>
         </form>
       </div>
@@ -32,6 +31,9 @@
             </li>
             <li class="nav-item">
               <a href="" class="nav-link">Jobs</a>
+            </li>
+            <li class="nav-item">
+              <a href="" class="nav-link">Forum</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">Profile</a>

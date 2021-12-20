@@ -16,7 +16,8 @@ class CreateMsmeTable extends Migration
         Schema::create('msme', function (Blueprint $table) {
             
             $table->bigIncrements('msmeID');
-            $table->integer('userID');
+            $table->bigInteger('userID')->unsigned();
+            $table->foreign('userID')->references('userID')->on('user');
             $table->string('msmeName');
             $table->string('msmeAddress');
             $table->timestamps();

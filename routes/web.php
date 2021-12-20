@@ -29,7 +29,11 @@ Route::get('/register', function(){
     return view('register');
 });
 
+Route::get('/forum', function(){
+    return view('forum');
+});
+
+
 Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/home', [HomeController::class, 'index']);
-
-Route::post('/search', [SearchController::class, 'getSearchResults']);
+Route::get('/search', [SearchController::class, 'getSearchResults']);

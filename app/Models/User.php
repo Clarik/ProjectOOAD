@@ -10,4 +10,12 @@ class User extends Model
     use HasFactory;
 
     protected $table = 'user';
+
+    public function MSME(){
+        return $this->hasOne(MSME::class);
+    }
+
+    public function Applicant(){
+        return $this->hasOne(Applicant::class);
+    }
 }

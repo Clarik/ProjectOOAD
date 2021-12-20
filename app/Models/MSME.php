@@ -11,4 +11,8 @@ class MSME extends User
 
     protected $table = 'msme';
 
+    public function User(){
+        return $this->belongsTo(User::class, 'userID', 'userID');
+    }
+
 }

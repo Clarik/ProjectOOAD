@@ -11,4 +11,8 @@ class Applicant extends User
 
     protected $table = 'applicant';
 
+    public function User(){
+        return $this->belongsTo(User::class, 'userID', 'userID');
+    }
+
 }

@@ -15,7 +15,8 @@ class CreateApplicantTable extends Migration
     {
         Schema::create('applicant', function (Blueprint $table) {
             $table->bigIncrements('applicantID');
-            $table->integer('userID');
+            $table->bigInteger('userID')->unsigned();
+            $table->foreign('userID')->references('userID')->on('user');
             $table->string('applicantName');
             $table->string('applicantAddress');
             $table->string('applicantDOB');
