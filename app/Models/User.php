@@ -10,6 +10,7 @@ class User extends Model
     use HasFactory;
 
     protected $table = 'user';
+    protected $primaryKey = "userID";
 
     public function MSME(){
         return $this->hasOne(MSME::class);

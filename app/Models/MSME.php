@@ -15,4 +15,8 @@ class MSME extends User
         return $this->belongsTo(User::class, 'userID', 'userID');
     }
 
+    public function JobVacancy() {
+        return $this->hasMany(JobVacancy::class, 'msmeID', 'msmeID');
+    }
+
 }
