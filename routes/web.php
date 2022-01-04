@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\CheckApplicant;
 use App\Http\Middleware\CheckGuest;
 use App\Http\Middleware\CheckLogin;
 use App\Http\Middleware\CheckMSME;
@@ -44,7 +45,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->middleware(CheckLogin
 Route::get('/home', [HomeController::class, 'index'])->middleware(CheckLogin::class);
 Route::get('/search', [SearchController::class, 'getSearchResults'])->middleware(CheckLogin::class);
 
-
+Route::get('/jobvacancy/view', [JobVacancyController::class, 'applicantview'])->middleware(CheckApplicant::class);
 Route::get('/jobvacancy/manage', [JobVacancyController::class, 'index'])->middleware(CheckMSME::class);
 Route::get('/jobvacancy/create', [JobVacancyController::class, 'create'])->middleware(CheckMSME::class);
 Route::post('/jobvacancy/create', [JobVacancyController::class, 'save'])->middleware(CheckMSME::class);

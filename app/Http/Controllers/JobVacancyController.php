@@ -17,6 +17,12 @@ class JobVacancyController extends Controller
         return view('jobvacancy/manage', compact('vacancies'));
     }
 
+    public function applicantview()
+    {
+        $vacancies = JobVacancy::all();
+        return view('jobvacancy/view', compact('vacancies'));
+    }
+
     public function create()
     {
         $jobs = Job::all();

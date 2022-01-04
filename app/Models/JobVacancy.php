@@ -17,7 +17,7 @@ class JobVacancy extends Model
     }
 
     public function MSME() {
-        return $this->belongsTo(MSME::class);
+        return $this->belongsTo(MSME::class, 'msmeID', 'msmeID');
     }
 
     public function Proposal() {
