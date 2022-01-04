@@ -40,7 +40,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">Profile</a>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a href="" class="dropdown-item">View Profile</a>
+                <a href="/profile" class="dropdown-item">View Profile</a>
                 <div class="dropdown-divider"></div>
                 <a href="/logout" class="dropdown-item">Logout</a>
               </div>

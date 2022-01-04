@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JobVacancyController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
@@ -50,3 +51,5 @@ Route::post('/jobvacancy/create', [JobVacancyController::class, 'save'])->middle
 Route::get('/jobvacancy/update/{id}', [JobVacancyController::class, 'update'])->middleware(CheckMSME::class);
 Route::put('/jobvacancy/update/{id}', [JobVacancyController::class, 'saveupdate'])->middleware(CheckMSME::class);
 Route::get('/jobvacancy/delete/{id}', [JobVacancyController::class, 'delete'])->middleware(CheckMSME::class);
+
+Route::get('/profile', [ProfileController::class, 'index'])->middleware(CheckLogin::class);
