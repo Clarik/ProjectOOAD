@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\ForumController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JobVacancyController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\CheckApplicant;
@@ -36,10 +38,9 @@ Route::get('/register', function(){
     return view('register');
 })->middleware(CheckGuest::class);
 
-Route::get('/forum', function(){
-    return view('forum');
-})->middleware(CheckLogin::class);
-
+Route::get('/forum', [ForumController::class, 'index'])->middleware(CheckLogin::class);
+Route::get('/forum/{id}', [ForumController::class, 'viewThread'])->middleware(CheckLogin::class);
+Route::post('/forum/{id}', [ReplyController::class, 'createReply'])->middleware(CheckLogin::class);
 
 Route::get('/logout', [LoginController::class, 'logout'])->middleware(CheckLogin::class);
 Route::get('/home', [HomeController::class, 'index'])->middleware(CheckLogin::class);

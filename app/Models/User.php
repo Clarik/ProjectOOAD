@@ -23,4 +23,12 @@ class User extends Model
     public function Certification(){
         return $this->hasMany(Certification::class,'userID','userID');
     }
+
+    public function threads(){
+        return $this->hasMany(Thread::class, 'userID', 'userID');
+    }
+
+    public function replies(){
+        return $this->hasMany(Reply::class, 'userID', 'userID');
+    }
 }

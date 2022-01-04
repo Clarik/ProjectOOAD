@@ -17,21 +17,25 @@
             <div class="container mt-4">
                 <div class="h2">Recent Forums</div>
                 <hr>
-                <div class="card-group">
-                    @for ($i = 0; $i < 5; $i++)
-                        <div class="card m-3" style="width: 18rem; border-radius:20px">
-                            <div class="card-body">
-                                <h5 class="card-title">Forum Title</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Author Name</h6>
-                                <p class="card-text">Lorem impsum.</p>
-                                <a href="#" class="card-link">View more</a>
+                @if (count($threads) > 0)
+                    <div class="card-group">
+                        @foreach ($threads as $thread)
+                            <div class="card m-3" style="width: 18rem; border-radius:20px">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{$thread->threadTitle}}</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">by: {{$thread->user->username}}</h6>
+                                    <p class="card-text">{{date("F d, Y", strtotime($thread->created_at))}}</p>
+                                    <a href="/forum/{{$thread->threadID}}" class="card-link">View more</a>
+                                </div>
                             </div>
-                        </div>
-                    @endfor
-                </div>
-                <div class="d-flex justify-content-end">
-                    <a href="/forum" class="text-right">See all >></a>
-                </div>
+                        @endforeach
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <a href="/forum" class="text-right">See all >></a>
+                    </div>
+                @else
+                    <div class="lead text-center">No Forums Available</div>
+                @endif
             </div>
         </div>
     </div>

@@ -5,29 +5,30 @@
         <div class="container my-5 px-5 py-3" style="background-color: white; border-radius: 20px;">
             <div class="container py-3">
                 <div class="display-3 me-2">
-                    Forum
+                    Forums
                 </div>
             </div>
             <hr>
-            <div class="container mt-4">
-                @php
-                    for ($i=0; $i < 4; $i++) { 
-                        echo '<div class="card-group">';
-                        for ($j=0; $j < 5; $j++) { 
-                            echo '
-                            <div class="card m-3" style="width: 18rem; border-radius:20px">
-                                <div class="card-body">
-                                    <h5 class="card-title">Forum Title</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">Author Name</h6>
-                                    <p class="card-text">Lorem impsum.</p>
-                                    <a href="#" class="card-link">View more</a>
-                                </div>
+            <div class="w-100">
+                @if (count($threads) == 0)
+                    <div class="text-left lead w-100">There are no threads that can be showed right now</div>
+                @else
+                <div class="d-flex flex-column " style="width: 100%">
+                    @foreach ($threads as $thread)
+                        <div class="card mb-3 w-100" style="border-radius:20px">
+                            <div class="card-body">
+                                <h5 class="card-title">{{$thread->threadTitle}}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">by: {{$thread->user->username}}</h6>
+                                <p class="card-text">{{date("F d, Y", strtotime($thread->created_at))}}</p>
+                                <a href="/forum/{{$thread->threadID}}" class="card-link">View more</a>
                             </div>
-                            ';
-                        }
-                        echo '</div>';
-                    }
-                @endphp
+                        </div>
+                    @endforeach
+                </div>
+                @endif
+            </div>
+            <div class="pagination d-flex justify-content-end align-items-center">
+                {{$threads->withQueryString()->links()}}
             </div>
         </div>
     </div>
