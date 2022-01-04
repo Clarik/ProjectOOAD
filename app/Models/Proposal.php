@@ -10,6 +10,7 @@ class Proposal extends Model
     use HasFactory;
 
     protected $table = 'proposal';
+    protected $primaryKey = 'proposalID';
 
     public function User(){
         return $this->belongsTo(User::class,'userID','userID');

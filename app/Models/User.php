@@ -13,11 +13,11 @@ class User extends Model
     protected $primaryKey = "userID";
 
     public function MSME(){
-        return $this->hasOne(MSME::class);
+        return $this->hasOne(MSME::class,'userID','userID');
     }
 
     public function Applicant(){
-        return $this->hasOne(Applicant::class);
+        return $this->hasOne(Applicant::class,'userID','userID');
     }
 
     public function Certification(){

@@ -52,5 +52,10 @@ Route::post('/jobvacancy/create', [JobVacancyController::class, 'save'])->middle
 Route::get('/jobvacancy/update/{id}', [JobVacancyController::class, 'update'])->middleware(CheckMSME::class);
 Route::put('/jobvacancy/update/{id}', [JobVacancyController::class, 'saveupdate'])->middleware(CheckMSME::class);
 Route::get('/jobvacancy/delete/{id}', [JobVacancyController::class, 'delete'])->middleware(CheckMSME::class);
+Route::get('/jobvacancy/apply/{id}', [JobVacancyController::class, 'applicantapply'])->middleware(CheckApplicant::class);
+Route::get('/jobvacancy/applied', [JobVacancyController::class, 'applicantproposal'])->middleware(CheckApplicant::class);
+Route::get('/jobvacancy/applicantlist', [JobVacancyController::class, 'applicantlist'])->middleware(CheckMSME::class);
+Route::get('/jobvacancy/hire/{id}', [JobVacancyController::class, 'applicanthire'])->middleware(CheckMSME::class);
+Route::get('/jobvacancy/reject/{id}', [JobVacancyController::class, 'applicantreject'])->middleware(CheckMSME::class);
 
 Route::get('/profile', [ProfileController::class, 'index'])->middleware(CheckLogin::class);

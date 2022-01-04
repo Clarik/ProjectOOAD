@@ -28,7 +28,7 @@ class LoginController extends Controller
         }
             
 
-        return back();
+        return back()->with('alert', 'Username or Password Incorrect');
     }
 
     public function logout(){

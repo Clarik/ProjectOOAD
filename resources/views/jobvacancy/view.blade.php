@@ -28,7 +28,6 @@
                         @csrf
                         <button class="mx-2 btn btn-info">Apply</button>
                     </form>
-
                 </div>
             </div>
             @endforeach
