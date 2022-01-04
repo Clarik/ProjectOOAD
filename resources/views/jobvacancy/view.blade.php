@@ -20,7 +20,7 @@
                     <h3>{{$vacancy->job()->first()->jobName}}</h3>
                     <h6>Duration: {{$vacancy->duration}}</h3>
                         <p>{{$vacancy->description}}</p>
-                        <small>Created on {{$vacancy->created_at}} by {{$vacancy->msme()->first()->msmeName}}</small>
+                        <small>Created on {{$vacancy->created_at}} by <a target="_blank" href="/profile/view/msme/{{$vacancy->MSME()->first()->userID}}">{{$vacancy->msme()->first()->msmeName}}</a></small>
                 </div>
 
                 <div class="card-right float-right d-flex">

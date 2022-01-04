@@ -21,7 +21,7 @@
                     <h6>Duration: {{$proposal->JobVacancy()->first()->duration}}</h3>
                         <p>{{$proposal->JobVacancy()->first()->description}}</p>
                         <div><small>Created on {{$proposal->JobVacancy()->first()->created_at}}</small></div>
-                        <div><small>Proposed on {{$proposal->created_at}} by {{$proposal->User()->first()->username}}</small></div>
+                        <div><small>Proposed on {{$proposal->created_at}} by <a target="_blank" href="/profile/view/applicant/{{$proposal->User()->first()->userID}}">{{$proposal->User()->first()->username}}</a></small></div>
                     <div><strong>Status: {{$proposal->isHired == false ? 'Pending' : 'Hired'}}</strong></div>
                 </div>
 

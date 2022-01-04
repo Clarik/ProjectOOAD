@@ -59,3 +59,14 @@ Route::get('/jobvacancy/hire/{id}', [JobVacancyController::class, 'applicanthire
 Route::get('/jobvacancy/reject/{id}', [JobVacancyController::class, 'applicantreject'])->middleware(CheckMSME::class);
 
 Route::get('/profile', [ProfileController::class, 'index'])->middleware(CheckLogin::class);
+Route::post('/profile/update/applicant', [ProfileController::class, 'updateapplicant'])->middleware(CheckApplicant::class);
+Route::post('/profile/update/msme', [ProfileController::class, 'updatemsme'])->middleware(CheckMSME::class);
+Route::get('/profile/view/applicant/{id}', [ProfileController::class, 'viewprofileapplicant'])->middleware(CheckLogin::class);
+Route::get('/profile/view/msme/{id}', [ProfileController::class, 'viewprofilemsme'])->middleware(CheckLogin::class);
+Route::get('/profile/certification', [ProfileController::class, 'managecertification'])->middleware(CheckApplicant::class);
+Route::get('/profile/certification/insert', [ProfileController::class, 'insertcertification'])->middleware(CheckApplicant::class);
+Route::post('/profile/certification/insert', [ProfileController::class, 'savecertification'])->middleware(CheckApplicant::class);
+Route::get('/profile/certification/update/{id}', [ProfileController::class, 'updatecertification'])->middleware(CheckApplicant::class);
+Route::put('/profile/certification/update/{id}', [ProfileController::class, 'saveupdatecertification'])->middleware(CheckApplicant::class);
+Route::get('/profile/certification/delete/{id}', [ProfileController::class, 'deletecertification'])->middleware(CheckApplicant::class);
+Route::get('/profile/certification/view/{id}', [ProfileController::class, 'viewcertification'])->middleware(CheckLogin::class);
