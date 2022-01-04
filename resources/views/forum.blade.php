@@ -2,6 +2,9 @@
 
 @section('content')
     <div class="min-vh-100 d-flex justify-content-center" style="background-color: #F2F1EF">
+        <a href="/createThread" style="position: fixed; top: 85%; right: 10%">
+            <i class="bi bi-plus-circle-fill text-primary display-2"></i>
+        </a>
         <div class="container my-5 px-5 py-3" style="background-color: white; border-radius: 20px;">
             <div class="container py-3">
                 <div class="display-3 me-2">

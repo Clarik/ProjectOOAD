@@ -22,4 +22,21 @@ class ForumController extends Controller
                 ->with('thread', $thread)
                 ->with('replies', $replies);
     }
+
+    public function createThreadIndex(){
+        return view('createthread');
+    }
+
+    public function createThread(Request $request){
+        $title = $request->title;
+        $content = $request->content;
+
+        $thread = new Thread();
+        $thread->userID = session()->get('user')->userID;
+        $thread->threadTitle = $title;
+        $thread->threadContent = $content;
+        $thread->save();
+
+        return redirect('/forum');
+    }
 }

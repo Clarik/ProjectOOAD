@@ -41,6 +41,8 @@ Route::get('/register', function(){
 Route::get('/forum', [ForumController::class, 'index'])->middleware(CheckLogin::class);
 Route::get('/forum/{id}', [ForumController::class, 'viewThread'])->middleware(CheckLogin::class);
 Route::post('/forum/{id}', [ReplyController::class, 'createReply'])->middleware(CheckLogin::class);
+Route::get('/createThread', [ForumController::class, 'createThreadIndex'])->middleware(CheckLogin::class);
+Route::post('/createThread', [ForumController::class, 'createThread'])->middleware(CheckLogin::class);
 
 Route::get('/logout', [LoginController::class, 'logout'])->middleware(CheckLogin::class);
 Route::get('/home', [HomeController::class, 'index'])->middleware(CheckLogin::class);
