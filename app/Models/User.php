@@ -19,4 +19,8 @@ class User extends Model
     public function Applicant(){
         return $this->hasOne(Applicant::class);
     }
+
+    public function Certification(){
+        return $this->hasMany(Certification::class,'userID','userID');
+    }
 }
