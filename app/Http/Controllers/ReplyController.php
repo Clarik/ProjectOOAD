@@ -8,6 +8,16 @@ use Illuminate\Http\Request;
 class ReplyController extends Controller
 {
     public function createReply(Request $request, $id){
+
+        request()->validate(
+            [
+                'content' => 'required'
+            ],
+            [
+                'content.required' => 'Content must not empty.',
+            ]
+        );
+
         $content = $request->content;
 
         // dd($content, session()->get('user')->userID);
@@ -17,6 +27,6 @@ class ReplyController extends Controller
         $reply->replyContent = $content;
         $reply->save();
 
-        return back();
+        return back()->with('alert', 'Your reply succesfully posted!');
     }
 }

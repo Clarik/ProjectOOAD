@@ -28,6 +28,18 @@ class ForumController extends Controller
     }
 
     public function createThread(Request $request){
+        request()->validate(
+            [
+                'title' => 'required',
+                'content' => 'required'
+            ],
+            [
+                'title.required' => 'Title must not empty.',
+                'content.required' => 'Content must not empty.',
+            ]
+        );
+
+
         $title = $request->title;
         $content = $request->content;
 
@@ -37,6 +49,6 @@ class ForumController extends Controller
         $thread->threadContent = $content;
         $thread->save();
 
-        return redirect('/forum');
+        return redirect('/forum')->with('alert', 'Your thread succesfully posted!');;
     }
 }
