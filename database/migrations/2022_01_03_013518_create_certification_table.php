@@ -18,6 +18,7 @@ class CreateCertificationTable extends Migration
             $table->bigInteger('userID')->unsigned();
             $table->foreign('userID')->references('userID')->on('user');
             $table->string('certificationName');
+            $table->string('provider');
             $table->string('description');
             $table->date('datePublished');
             $table->string('certificationLink');
