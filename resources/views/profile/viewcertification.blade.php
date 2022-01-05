@@ -27,6 +27,9 @@
             @endforeach
             @endif
         </div>
+        <div class="pagination d-flex justify-content-end align-items-center">
+                {{$certifications->withQueryString()->links()}}
+            </div>
     </div>
 </div>
 

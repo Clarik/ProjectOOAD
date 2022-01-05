@@ -48,6 +48,9 @@
             @endforeach
             @endif
         </div>
+        <div class="pagination d-flex justify-content-end align-items-center">
+                {{$certifications->links()}}
+        </div>
     </div>
 </div>
 

@@ -51,8 +51,8 @@ class ProfileController extends Controller
     public function managecertification()
     {
         $user = session()->get('user');
-        $certifications = Certification::where('userID', $user->userID)->get();
-        return view('profile/certification', compact('certifications'));
+        $certifications = Certification::where('userID', $user->userID)->paginate(5);
+        return view('profile/certification')->with('certifications', $certifications);;
     }
 
     public function insertcertification()
@@ -135,7 +135,7 @@ class ProfileController extends Controller
             return back();
         }
 
-        $certifications = Certification::where('userID', $user->userID)->get();
-        return view('profile/viewcertification', compact('user','certifications'));
+        $certifications = Certification::where('userID', $user->userID)->paginate(5);
+        return view('profile/viewcertification', compact('user'))->with('certifications', $certifications);
     }
 }
