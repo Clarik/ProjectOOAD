@@ -21,7 +21,7 @@
                     <h6>Provider: {{$cert->provider}}</h3>
                         <p>{{$cert->description}}</p>
                         <p>Link: <a href="{{$cert->certificationLink}}">{{$cert->certificationLink}}</a></p>
-                        <small>Published on {{date("F d, Y H:i", strtotime($cert->created_at)}}</small>
+                        <small>Published on {{date("F d, Y H:i", strtotime($cert->created_at))}}</small>
                 </div>
             </div>
             @endforeach
