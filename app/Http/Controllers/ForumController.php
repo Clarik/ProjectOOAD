@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class ForumController extends Controller
 {
     public function index(){
-        $threads = Thread::paginate(15);
+        $threads = Thread::paginate(5);
 
         return view('forum')->with('threads', $threads);
     }

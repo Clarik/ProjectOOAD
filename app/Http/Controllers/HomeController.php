@@ -16,7 +16,7 @@ class HomeController extends Controller
             return redirect('login');
         }
 
-        $threadList = Thread::orderBy('created_at','DESC')->take(4)->get();
+        $threadList = Thread::orderBy('created_at','DESC')->take(2)->get();
 
         $applicantList = null;
         $applied = null;
@@ -25,7 +25,7 @@ class HomeController extends Controller
         $msme = MSME::where('userID', $user->userID)->first();
         if($msme === null) {
             $applied = Proposal::orderBy('created_at','DESC')->where('userID', $user->userID)
-                ->take('5')->get();
+                ->take(2)->get();
         }
         else {
             $vacancies = JobVacancy::where('msmeID', $msme->msmeID)->get();
@@ -35,7 +35,7 @@ class HomeController extends Controller
             }
     
             $applicantList = Proposal::orderBy('created_at','DESC')->whereIn('jobVacancyID', $jobVacancyID)
-                                ->take(4)->get();
+                                ->take(2)->get();
         }
 
         return view('home')->with('threads', $threadList)
