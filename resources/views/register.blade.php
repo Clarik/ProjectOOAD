@@ -11,7 +11,7 @@
 <body>
     <div class="container d-flex flex-column justify-content-center align-items-center min-vh-100 w-100">
         <div>
-            <h2>What do you want to regsiter as?</h2>
+            <h2>What do you want to register as?</h2>
             <br>
             <div class="d-flex justify-content-around w-100">
                 <a href="/register/MSME" class="btn btn-outline-primary">MSME</a>
