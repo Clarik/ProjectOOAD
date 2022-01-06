@@ -3,7 +3,7 @@
 @section('content')
 <div class="min-vh-100 d-flex justify-content-center" style="background-color: #F2F1EF">
 
-    <a href="/createThread" style="position: fixed; top: 85%; right: 10%">
+    <a href="/profile/certification/insert" style="position: fixed; top: 85%; right: 10%">
         <i class="bi bi-plus-circle-fill text-primary display-2"></i>
     </a>
 
