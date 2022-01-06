@@ -19,7 +19,7 @@ class CreateCertificationTable extends Migration
             $table->foreign('userID')->references('userID')->on('user');
             $table->string('certificationName');
             $table->string('provider');
-            $table->string('description');
+            $table->text('description');
             $table->date('datePublished');
             $table->string('certificationLink');
             $table->timestamps();

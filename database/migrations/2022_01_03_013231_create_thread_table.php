@@ -18,7 +18,7 @@ class CreateThreadTable extends Migration
             $table->bigInteger('userID')->unsigned();
             $table->foreign('userID')->references('userID')->on('user');
             $table->string('threadTitle');
-            $table->string('threadContent');
+            $table->text('threadContent');
             $table->timestamps();
         });
     }

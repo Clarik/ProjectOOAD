@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Applicant;
+use App\Models\JobVacancy;
+use App\Models\MSME;
+use App\Models\Proposal;
 use App\Models\Thread;
 use Illuminate\Http\Request;
 
@@ -12,12 +16,30 @@ class HomeController extends Controller
             return redirect('login');
         }
 
-        $threadList = Thread::all();
-        $count = 0;
-        if(count($threadList)<5) $count = count($threadList);
-        else $count = 5;
+        $threadList = Thread::orderBy('created_at','DESC')->take(4)->get();
 
-        $threads = $threadList->random($count);
-        return view('home')->with('threads', $threads);
+        $applicantList = null;
+        $applied = null;
+        
+        $user = session()->get('user');
+        $msme = MSME::where('userID', $user->userID)->first();
+        if($msme === null) {
+            $applied = Proposal::orderBy('created_at','DESC')->where('userID', $user->userID)
+                ->take('5')->get();
+        }
+        else {
+            $vacancies = JobVacancy::where('msmeID', $msme->msmeID)->get();
+            $jobVacancyID = array();
+            foreach ($vacancies as $vacancy) {
+                array_push($jobVacancyID, $vacancy->jobVacancyID);
+            }
+    
+            $applicantList = Proposal::orderBy('created_at','DESC')->whereIn('jobVacancyID', $jobVacancyID)
+                                ->take(4)->get();
+        }
+
+        return view('home')->with('threads', $threadList)
+                ->with('applicants', $applicantList)
+                ->with('applied', $applied);
     }
 }

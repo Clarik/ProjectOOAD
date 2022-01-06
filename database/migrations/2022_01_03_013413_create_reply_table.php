@@ -19,7 +19,7 @@ class CreateReplyTable extends Migration
             $table->foreign('threadID')->references('threadID')->on('thread');
             $table->bigInteger('userID')->unsigned();
             $table->foreign('userID')->references('userID')->on('user');
-            $table->string('replyContent');
+            $table->text('replyContent');
             $table->timestamps();
         });
     }

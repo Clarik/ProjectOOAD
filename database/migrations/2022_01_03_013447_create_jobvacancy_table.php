@@ -20,7 +20,7 @@ class CreateJobvacancyTable extends Migration
             $table->bigInteger('jobID')->unsigned();
             $table->foreign('jobID')->references('jobID')->on('job');
             $table->string('duration');
-            $table->string('description');
+            $table->text('description');
             $table->timestamps();
         });
     }

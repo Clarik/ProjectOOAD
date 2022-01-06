@@ -47,7 +47,7 @@ class JobVacancyController extends Controller
     public function applicantproposal()
     {
         $user = session()->get('user');
-        $proposals = Proposal::where('userID', $user->userID)->get();
+        $proposals = Proposal::orderBy('created_at','DESC')->where('userID', $user->userID)->get();
         return view('jobvacancy/applied', compact('proposals'));
     }
 
@@ -61,7 +61,7 @@ class JobVacancyController extends Controller
             array_push($jobVacancyID, $vacancy->jobVacancyID);
         }
 
-        $proposals = Proposal::whereIn('jobVacancyID', $jobVacancyID)->get();
+        $proposals = Proposal::orderBy('created_at','DESC')->whereIn('jobVacancyID', $jobVacancyID)->get();
         return view('jobvacancy/applicantlist', compact('proposals'));
     }
 

@@ -50,7 +50,7 @@
             <form action="{{url()->current()}}" method="POST" class="d-flex flex-column align-items-center p-3 mb-3" style="border: 2px solid #F2F1EF; border-radius: 10px">
                 @csrf
                 <label for="" class="h6 mb-3 ps-2 text-left w-100">Reply to this thread</label>
-                <input type="text" class="form-control mb-2" id="content" name="content" placeholder="Reply Content" style="border-radius: 20px">
+                <textarea class="form-control mb-2" id="content" name="content" placeholder="Reply Content" style="border-radius: 20px"></textarea>
                 <button class="btn btn-outline-primary mt-2" type="submit">Reply</button>
             </form>
         </div>

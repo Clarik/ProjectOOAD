@@ -22,7 +22,8 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{$thread->threadTitle}}</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">by: {{$thread->user->username}}</h6>
-                                <p class="card-text">{{date("F d, Y", strtotime($thread->created_at))}}</p>
+                                <div>{{mb_strimwidth($thread->threadContent, 0, 20, "...");}}</div>
+                                <p class="card-text"><small>Created on {{date("F d, Y", strtotime($thread->created_at))}}</small></p>
                                 <a href="/forum/{{$thread->threadID}}" class="card-link">View more</a>
                             </div>
                         </div>

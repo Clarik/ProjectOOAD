@@ -3,13 +3,9 @@
 @section('content')
 <div class="min-vh-100 d-flex justify-content-center" style="background-color: #F2F1EF">
 
-    <div id="floatingRightBottom">
-        <a href="/profile/certification/insert">
-            <button type="button" class="btn btn-primary btn-floating position-fixed rounded-circle">
-                <i class="fa-solid fa-folder-plus"></i>
-            </button>
-        </a>
-    </div>
+    <a href="/createThread" style="position: fixed; top: 85%; right: 10%">
+        <i class="bi bi-plus-circle-fill text-primary display-2"></i>
+    </a>
 
     <div class="container my-5 px-5 py-3" style="background-color: white; border-radius: 20px;">
         <div class="container py-3">
@@ -19,7 +15,7 @@
         </div>
         <hr>
         <div class="container mt-4">
-        @if (count($certifications) == 0)
+            @if (count($certifications) == 0)
             <div class="lead text-center">You don't have any certification yet</div>
             @else
             @foreach ($certifications as $cert)
@@ -28,8 +24,8 @@
                     <h3>{{$cert->certificationName}}</h3>
                     <h6>Provider: {{$cert->provider}}</h3>
                         <p>{{$cert->description}}</p>
-                        <p>{{$cert->certificationLink}}</p>
-                        <small>Published on {{$cert->created_at}}</small>
+                        <p>Link: <a href="{{$cert->certificationLink}}">{{$cert->certificationLink}}</a></p>
+                        <small>Published on {{date("F d, Y H:i", strtotime($cert->created_at))}}</small>
                 </div>
 
                 <div class="card-right float-right d-flex">
@@ -49,7 +45,7 @@
             @endif
         </div>
         <div class="pagination d-flex justify-content-end align-items-center">
-                {{$certifications->links()}}
+            {{$certifications->links()}}
         </div>
     </div>
 </div>
@@ -65,15 +61,6 @@
         height: 10%;
     }
 
-    #floatingRightBottom {
-        position: absolute;
-        left: 0;
-        right: 0;
-        margin-top: 80vh;
-        margin-left: 95vw;
-        z-index: 10;
-        color: #5046e1;
-    }
 </style>
 
 @endsection

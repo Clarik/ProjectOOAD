@@ -28,6 +28,16 @@
             </div>
 
             <div class="form-group p-3">
+                <label for="username">Applicant Name</label>
+                <input class="form-control mt-1" type="text" name="name" id="name" value="{{$user->Applicant()->first()->applicantName}}">
+            </div>
+
+            <div class="form-group p-3">
+                <label for="username">Applicant Address</label>
+                <input class="form-control mt-1" type="text" name="name" id="name" value="{{$user->Applicant()->first()->applicantAddress}}">
+            </div>
+
+            <div class="form-group p-3">
                 <label for="cv">CV</label>
                 <textarea class="form-control my-1" type="text" name="cv" id="cv" rows="2">{{$user->Applicant()->first()->CV}}</textarea>
                 <label for="cv" class="fw-light text-muted">Write your a statement about yourself</label>

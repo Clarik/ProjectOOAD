@@ -3,13 +3,9 @@
 @section('content')
 <div class="min-vh-100 d-flex justify-content-center" style="background-color: #F2F1EF">
 
-    <div id="floatingRightBottom">
-        <a href="/jobvacancy/create">
-            <button type="button" class="btn btn-primary btn-floating position-fixed rounded-circle">
-                <i class="fa-solid fa-folder-plus"></i>
-            </button>
-        </a>
-    </div>
+    <a href="/jobvacancy/create" style="position: fixed; top: 85%; right: 10%">
+            <i class="bi bi-plus-circle-fill text-primary display-2"></i>
+    </a>
 
     <div class="container my-5 px-5 py-3" style="background-color: white; border-radius: 20px;">
         <div class="container py-3">
@@ -61,15 +57,6 @@
         height: 10%;
     }
 
-    #floatingRightBottom {
-        position: absolute;
-        left: 0;
-        right: 0;
-        margin-top: 80vh;
-        margin-left: 95vw;
-        z-index: 10;
-        color: #5046e1;
-    }
 </style>
 
 @endsection

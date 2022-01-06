@@ -19,7 +19,7 @@
 
             <div class="form-group p-3">
                 <label for="email">Thread Content</label>
-                <input class="form-control mt-1" type="text" name="content" id="content">
+                <textarea class="form-control mt-1" name="content" id="content"></textarea>
             </div>
 
             <div class="form-group p-3">
