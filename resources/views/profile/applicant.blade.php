@@ -38,8 +38,8 @@
             </div>
 
             <div class="form-group p-3">
-                <label for="cv">CV</label>
-                <textarea class="form-control my-1" type="text" name="cv" id="cv" rows="2">{{$user->Applicant()->first()->CV}}</textarea>
+                <label for="cv">Description</label>
+                <textarea class="form-control my-1" type="text" name="description" id="description" rows="2">{{$user->Applicant()->first()->description}}</textarea>
                 <label for="cv" class="fw-light text-muted">Write your a statement about yourself</label>
             </div>
 

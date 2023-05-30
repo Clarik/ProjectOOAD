@@ -16,11 +16,11 @@
                 @else
                     @foreach ($msmes as $msme)
                         <div class="card m-3" style="width: 18rem;">
-                            <div class="card-body">
+                            <a href={{"/profile/view/".$msme->user->userID}} class="card-body" style="text-decoration: none;">
                                 <h5 class="card-title">{{$msme->msmeName}}</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">{{$msme->msmeAddress}}</h6>
                                 <h6 class="card-subtitle mb-2 text-muted">{{$msme->user->phone}}</h6>
-                            </div>
+                            </a>
                         </div>
                     @endforeach
                 @endif
@@ -33,11 +33,11 @@
                 @else
                     @foreach ($applicants as $applicant)
                         <div class="card m-3" style="width: 18rem;">
-                            <div class="card-body">
+                            <a href={{"/profile/view/".$applicant->user->userID}} class="card-body" style="text-decoration: none;">
                                 <h5 class="card-title">{{$applicant->applicantName}}</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">{{$applicant->applicantAddress}}</h6>
                                 <h6 class="card-subtitle mb-2 text-muted">{{$applicant->user->phone}}</h6>
-                            </div>
+                            </a>
                         </div>
                     @endforeach
                 @endif

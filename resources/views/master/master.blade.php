@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>JobAisle</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/5b9d57e904.js" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -19,6 +20,13 @@
     alert(msg);
   </script>
   @endif
+
+  <style>
+    .navbar .dropdown-menu-right { 
+      right: 0; 
+      left: auto; 
+    }
+  </style>
 </head>
 <header>
   <div class="d-flex justify-content-between align-items-center">
@@ -57,10 +65,12 @@
           <li class="nav-item">
             <a href="/forum" class="nav-link">Forum</a>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">Profile</a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a href="/profile" class="dropdown-item">View Profile</a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+              <a href={{"/profile/view/".session()->get('user')->userID}} class="dropdown-item">View Profile</a>
+              <div class="dropdown-divider"></div>
+              <a href="/profile/edit" class="dropdown-item">Edit Profile</a>
               <div class="dropdown-divider"></div>
               <a href="/logout" class="dropdown-item">Logout</a>
             </div>

@@ -4,15 +4,34 @@ namespace App\Http\Controllers;
 
 use App\Models\Applicant;
 use App\Models\Certification;
+use App\Models\JobVacancy;
 use App\Models\MSME;
 use App\Models\User;
+use App\Models\Thread;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    public function index()
+    public function index($id)
     {
+        $user = User::find($id);
+        $msme = MSME::where('userID', $user->userID)->first();
+        $threadList = Thread::where('userID', $user->userID)->orderBy('created_at','DESC')->paginate(3, ['*'], 'forums');
+        $vacancies = null;
+        $applicant = null;
+
+        if($msme === null) {
+            $applicant = Applicant::where('userID', $user->userID)->first();
+        }
+        else {
+            $vacancies = JobVacancy::where('msmeID', $msme->msmeID)->paginate(3, ['*'], 'vacancies');
+        }
+
+        return view('profile/profilepage', compact('user', 'msme', 'applicant','vacancies', 'threadList'));
+    }
+
+    public function edit(){
         $user = session()->get('user');
         $msme = MSME::where('userID', $user->userID)->first();
         if($msme === null) {
@@ -29,7 +48,7 @@ class ProfileController extends Controller
         $user = session()->get('user');
         
         $applicant = $user->Applicant()->first();
-        $applicant->CV = $request->cv;
+        $applicant->description = $request->description;
         $applicant->portofolioLink = $request->link;
         $applicant->save();
 
